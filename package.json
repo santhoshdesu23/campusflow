@@ -1,0 +1,14 @@
+{
+  "name": "campusflow-ai",
+  "version": "1.0.0",
+  "description": "CampusFlow AI - Intelligent College Document Workflow Automation Platform",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev": "node dev.js",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {}
+}

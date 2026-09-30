@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment Variables & Secrets (CRITICAL SECURITY)
+.env
+.env.local
+.env.*.local
+*.env
+server/.env
+client/.env
+
+# Production Build Artifacts
+dist/
+client/dist/
+build/
+.vercel/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Editor & System Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
