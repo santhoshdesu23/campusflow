@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import api from '../services/api';
 import Logo from '../components/Logo';
 import {
   ShieldCheck,
@@ -30,15 +31,14 @@ export default function VerifyCertificate() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/certificates/${certificateId}/verify`);
-      const json = await res.json();
-      if (json.success && json.verified) {
-        setData(json.data);
+      const res = await api.get(`/certificates/${certificateId}/verify`);
+      if (res.data.success && res.data.verified) {
+        setData(res.data.data);
       } else {
-        setError(json.message || 'Certificate verification failed');
+        setError(res.data.message || 'Certificate verification failed');
       }
     } catch (err) {
-      setError('Network lookup error. Please verify the QR identifier.');
+      setError(err.response?.data?.message || 'Network lookup error. Please verify the QR identifier.');
     } finally {
       setLoading(false);
     }
@@ -180,7 +180,7 @@ export default function VerifyCertificate() {
                   {/* PDF Download Button */}
                   <div className="pt-2">
                     <button
-                      onClick={() => window.open(`/api/certificates/${data.certificateId}/download`, '_blank')}
+                      onClick={() => window.open(`${api.defaults.baseURL}/certificates/${data.certificateId}/download`, '_blank')}
                       className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold transition-colors shadow-sm flex items-center justify-center space-x-2"
                     >
                       <Download className="w-4 h-4" />
