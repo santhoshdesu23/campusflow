@@ -26,6 +26,18 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+// Serverless DB connection middleware for Vercel
+app.use(async (req, res, next) => {
+  if (process.env.VERCEL) {
+    try {
+      await connectDB();
+    } catch (e) {
+      console.error('Vercel DB connection error:', e);
+    }
+  }
+  next();
+});
+
 // Health Check
 app.get('/api/health', (req, res) => {
   res.json({
@@ -89,20 +101,6 @@ async function startServer() {
     console.error('❌ Failed to start CampusFlow server:', err);
     process.exit(1);
   }
-}
-
-// Serverless DB connection middleware
-app.use(async (req, res, next) => {
-  if (process.env.VERCEL) {
-    try {
-      await connectDB();
-    } catch (e) {
-      console.error('Vercel DB connection error:', e);
-    }
-  }
-  next();
-});
-
 if (!process.env.VERCEL) {
   startServer();
 }
