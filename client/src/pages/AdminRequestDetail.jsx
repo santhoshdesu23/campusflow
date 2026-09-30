@@ -206,7 +206,7 @@ export default function AdminRequestDetail() {
               <span>View Certificate</span>
             </button>
             <button
-              onClick={() => window.open(`/api/certificates/${certificate.certificateId}/download`, '_blank')}
+              onClick={() => window.open(`${api.defaults.baseURL}/certificates/${certificate.certificateId}/download`, '_blank')}
               className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm flex items-center space-x-1.5"
             >
               <Download className="w-3.5 h-3.5" />
@@ -505,7 +505,7 @@ export default function AdminRequestDetail() {
                   </button>
                   <button
                     onClick={() =>
-                      window.open(`/api/certificates/${certificate?.certificateId || request.certificateId}/download`, '_blank')
+                      window.open(`${api.defaults.baseURL}/certificates/${certificate?.certificateId || request.certificateId}/download`, '_blank')
                     }
                     className="w-full py-2 px-4 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-xl transition-colors flex items-center justify-center space-x-1.5"
                   >

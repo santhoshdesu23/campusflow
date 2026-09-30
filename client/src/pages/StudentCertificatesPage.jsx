@@ -170,7 +170,7 @@ export default function StudentCertificatesPage() {
                       <span>Preview</span>
                     </button>
                     <button
-                      onClick={() => window.open(`/api/certificates/${cert.certificateId}/download`, '_blank')}
+                      onClick={() => window.open(`${api.defaults.baseURL}/certificates/${cert.certificateId}/download`, '_blank')}
                       className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm flex items-center space-x-1"
                     >
                       <Download className="w-3.5 h-3.5" />

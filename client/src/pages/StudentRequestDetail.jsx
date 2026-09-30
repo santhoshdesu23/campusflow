@@ -118,7 +118,7 @@ export default function StudentRequestDetail() {
                 <span>Preview</span>
               </button>
               <button
-                onClick={() => window.open(`/api/certificates/${certificate.certificateId}/download`, '_blank')}
+                onClick={() => window.open(`${api.defaults.baseURL}/certificates/${certificate.certificateId}/download`, '_blank')}
                 className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm flex items-center space-x-1.5"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -257,7 +257,7 @@ export default function StudentRequestDetail() {
                       <span>View Generated Certificate</span>
                     </button>
                     <button
-                      onClick={() => window.open(`/api/certificates/${certificate.certificateId}/download`, '_blank')}
+                      onClick={() => window.open(`${api.defaults.baseURL}/certificates/${certificate.certificateId}/download`, '_blank')}
                       className="px-4 py-2 bg-white text-emerald-800 border border-emerald-300 hover:bg-emerald-50 font-bold text-xs rounded-xl transition-colors flex items-center space-x-1.5"
                     >
                       <Download className="w-4 h-4" />

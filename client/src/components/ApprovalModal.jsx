@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, Award, QrCode, ShieldCheck, X, Loader2, ArrowRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import api from '../services/api';
 
 export default function ApprovalModal({ isOpen, onClose, onConfirm, requestId, studentName }) {
   const [step, setStep] = useState('confirm'); // 'confirm' | 'animating' | 'done'
@@ -197,7 +198,7 @@ export default function ApprovalModal({ isOpen, onClose, onConfirm, requestId, s
                   type="button"
                   onClick={() => {
                     const certId = generatedCert?.certificateId || `CERT-2026-${requestId.replace('CF-2026-', '')}`;
-                    window.open(`/api/certificates/${certId}/download`, '_blank');
+                    window.open(`${api.defaults.baseURL}/certificates/${certId}/download`, '_blank');
                   }}
                   className="w-full sm:w-auto px-4 py-2.5 bg-indigo-600 text-white text-xs font-bold rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center justify-center space-x-1.5"
                 >

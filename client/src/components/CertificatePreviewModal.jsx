@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { X, Download, ExternalLink, Printer, ShieldCheck, QrCode, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 
 export default function CertificatePreviewModal({ certificate, isOpen, onClose }) {
   const navigate = useNavigate();
   if (!isOpen || !certificate) return null;
 
   const handleDownloadPdf = () => {
-    window.open(`/api/certificates/${certificate.certificateId}/download`, '_blank');
+    window.open(`${api.defaults.baseURL}/certificates/${certificate.certificateId}/download`, '_blank');
   };
 
   const handleVerify = () => {

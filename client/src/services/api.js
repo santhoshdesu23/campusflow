@@ -2,8 +2,15 @@ import axios from 'axios';
 
 const getBaseUrl = () => {
   const envUrl = import.meta.env.VITE_API_URL;
-  if (!envUrl) return '/api';
-  const clean = envUrl.trim().replace(/\/$/, '');
+  // If VITE_API_URL is set (from .env.production, .env.development, or deployment env), use it.
+  // Otherwise, default to production Render backend in production, or localhost in dev.
+  const targetUrl = (envUrl && envUrl.trim())
+    ? envUrl.trim()
+    : (import.meta.env.PROD
+        ? 'https://campusflow-tv7o.onrender.com'
+        : 'http://localhost:5000');
+
+  const clean = targetUrl.replace(/\/+$/, '');
   return clean.endsWith('/api') ? clean : `${clean}/api`;
 };
 

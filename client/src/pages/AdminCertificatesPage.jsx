@@ -165,7 +165,7 @@ export default function AdminCertificatesPage() {
                             <Eye className="w-4 h-4" />
                           </button>
                           <button
-                            onClick={() => window.open(`/api/certificates/${c.certificateId}/download`, '_blank')}
+                            onClick={() => window.open(`${api.defaults.baseURL}/certificates/${c.certificateId}/download`, '_blank')}
                             className="p-1.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors"
                             title="Download PDF"
                           >
